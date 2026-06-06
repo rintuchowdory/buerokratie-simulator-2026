@@ -3,7 +3,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
 import { translations } from "@/lib/translations";
 import { Moon, Sun } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type StepId = 1 | 2 | 3 | 4 | 5 | 6 | 7;
 
@@ -16,10 +16,48 @@ interface Step {
 
 export default function Home() {
   const [currentStep, setCurrentStep] = useState<StepId>(1);
+  const [isLoadingStep5, setIsLoadingStep5] = useState(false);
+  const [step5Ready, setStep5Ready] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const { language, toggleLanguage } = useLanguage();
 
   const t = translations[language];
+
+  // Verzögerungslogik für Schritt 5 mit Countdown
+  const [countdown, setCountdown] = useState(0);
+
+  const handleEnterStep5 = () => {
+    setIsLoadingStep5(true);
+    setStep5Ready(false);
+    setCountdown(5);
+    // 5 Sekunden Verzögerung
+    const timer = setTimeout(() => {
+      setStep5Ready(true);
+      setIsLoadingStep5(false);
+    }, 5000);
+    return () => clearTimeout(timer);
+  };
+
+  // Countdown-Timer
+  useEffect(() => {
+    if (countdown > 0 && !step5Ready) {
+      const countdownTimer = setTimeout(() => {
+        setCountdown(countdown - 1);
+      }, 1000);
+      return () => clearTimeout(countdownTimer);
+    }
+  }, [countdown, step5Ready]);
+
+  // Wenn wir zu Schritt 5 navigieren, Verzögerung starten
+  const handleNextStep = (stepId: StepId) => {
+    if (stepId === 5) {
+      handleEnterStep5();
+    } else {
+      setStep5Ready(false);
+    }
+    setCurrentStep(stepId);
+    window.scrollTo(0, 0);
+  };
 
   const steps: Record<StepId, Step> = {
     1: {
@@ -64,7 +102,7 @@ export default function Home() {
             </div>
           </div>
           <Button
-            onClick={() => setCurrentStep(2)}
+            onClick={() => handleNextStep(2)}
             className={`w-full ${
               theme === "dark"
                 ? "bg-slate-700 hover:bg-slate-600"
@@ -108,7 +146,7 @@ export default function Home() {
             {t.step2.description}
           </p>
           <Button
-            onClick={() => setCurrentStep(3)}
+            onClick={() => handleNextStep(3)}
             className={`w-full ${
               theme === "dark"
                 ? "bg-slate-700 hover:bg-slate-600"
@@ -163,8 +201,8 @@ export default function Home() {
             <div>{t.step3.date}</div>
             <div>{t.step3.time}</div>
           </div>
-          <Button
-            onClick={() => setCurrentStep(4)}
+            <Button
+            onClick={() => handleNextStep(4)}
             className={`w-full ${
               theme === "dark"
                 ? "bg-slate-700 hover:bg-slate-600"
@@ -208,7 +246,7 @@ export default function Home() {
             {t.step4.description}
           </p>
           <Button
-            onClick={() => setCurrentStep(5)}
+            onClick={() => handleNextStep(5)}
             className={`w-full ${
               theme === "dark"
                 ? "bg-slate-700 hover:bg-slate-600"
@@ -247,14 +285,19 @@ export default function Home() {
             </p>
           </div>
           <Button
-            onClick={() => setCurrentStep(6)}
+            onClick={() => handleNextStep(6)}
+            disabled={!step5Ready}
             className={`w-full ${
+              !step5Ready
+                ? "opacity-50 cursor-not-allowed"
+                : ""
+            } ${
               theme === "dark"
                 ? "bg-slate-700 hover:bg-slate-600"
                 : "bg-[#003366] hover:bg-[#002244]"
             }`}
           >
-            {t.step5.button}
+            {step5Ready ? t.step5.button : `${t.step5.button} (${countdown}s)`}
           </Button>
         </div>
       ),
@@ -274,7 +317,7 @@ export default function Home() {
             <li>{t.step6.item3}</li>
           </ul>
           <Button
-            onClick={() => setCurrentStep(7)}
+            onClick={() => handleNextStep(7)}
             className={`w-full ${
               theme === "dark"
                 ? "bg-slate-700 hover:bg-slate-600"
@@ -318,8 +361,8 @@ export default function Home() {
           </p>
           <Button
             onClick={() => {
-              setCurrentStep(1);
-              window.scrollTo(0, 0);
+              handleNextStep(1);
+              setStep5Ready(false);
             }}
             className={`w-full ${
               theme === "dark"
