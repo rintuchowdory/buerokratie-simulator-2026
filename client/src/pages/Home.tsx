@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
+import { translations } from "@/lib/translations";
 import { Moon, Sun } from "lucide-react";
 import { useState } from "react";
 
@@ -15,46 +17,49 @@ interface Step {
 export default function Home() {
   const [currentStep, setCurrentStep] = useState<StepId>(1);
   const { theme, toggleTheme } = useTheme();
+  const { language, toggleLanguage } = useLanguage();
+
+  const t = translations[language];
 
   const steps: Record<StepId, Step> = {
     1: {
       id: 1,
       progress: 15,
-      title: "Abschnitt A: Erfassung der Stammdaten",
+      title: t.step1.title,
       content: (
         <div className="space-y-4">
           <p className="text-sm text-muted-foreground">
-            Bitte füllen Sie alle Pflichtfelder gemäß § 3 VwVfG wahrheitsgemäß aus.
+            {t.step1.description}
           </p>
           <div className="space-y-3">
             <div>
               <label className="block text-sm font-semibold mb-2">
-                Nachname, Vorname (gemäß Ausweisdokument):
+                {t.step1.nameLabel}
               </label>
               <input
                 type="text"
-                placeholder="MUSTERMANN, ERIKA"
+                placeholder={t.step1.namePlaceholder}
                 className="w-full px-3 py-2 border border-input rounded-md text-sm bg-background text-foreground"
               />
             </div>
             <div>
               <label className="block text-sm font-semibold mb-2">
-                Zuständiges Finanzamt:
+                {t.step1.officeLabel}
               </label>
               <input
                 type="text"
-                placeholder="FA Berlin-Mitte"
+                placeholder={t.step1.officePlaceholder}
                 className="w-full px-3 py-2 border border-input rounded-md text-sm bg-background text-foreground"
               />
             </div>
             <div>
               <label className="block text-sm font-semibold mb-2">
-                Zweck des Antrags:
+                {t.step1.purposeLabel}
               </label>
               <select className="w-full px-3 py-2 border border-input rounded-md text-sm bg-background text-foreground">
-                <option>Erteilung einer Berechtigung</option>
-                <option>Verlängerung einer Frist</option>
-                <option>Einspruch gegen Nichtbescheidung</option>
+                <option>{t.step1.purposeOption1}</option>
+                <option>{t.step1.purposeOption2}</option>
+                <option>{t.step1.purposeOption3}</option>
               </select>
             </div>
           </div>
@@ -66,7 +71,7 @@ export default function Home() {
                 : "bg-[#003366] hover:bg-[#002244]"
             }`}
           >
-            Eingaben validieren
+            {t.step1.button}
           </Button>
         </div>
       ),
@@ -74,7 +79,7 @@ export default function Home() {
     2: {
       id: 2,
       progress: 25,
-      title: "Systemvalidierung fehlgeschlagen",
+      title: t.step2.title,
       content: (
         <div className="space-y-4">
           <div
@@ -89,18 +94,18 @@ export default function Home() {
                 theme === "dark" ? "text-red-200" : "text-red-900"
               }`}
             >
-              Systemvalidierung fehlgeschlagen:
+              {t.step2.errorTitle}
             </p>
             <p
               className={`text-sm mt-1 ${
                 theme === "dark" ? "text-red-300" : "text-red-800"
               }`}
             >
-              Das Dokument "Nachweis der steuerlichen Unbedenklichkeit (Anlage 4c)" wurde nicht im System gefunden.
+              {t.step2.errorMessage}
             </p>
           </div>
           <p className="text-sm">
-            Ihr Antrag kann ohne dieses Dokument nicht prozessiert werden. Bitte laden Sie die Anlage erneut herunter.
+            {t.step2.description}
           </p>
           <Button
             onClick={() => setCurrentStep(3)}
@@ -110,7 +115,7 @@ export default function Home() {
                 : "bg-[#003366] hover:bg-[#002244]"
             }`}
           >
-            Anlage 4c (PDF, 4.2 MB) generieren
+            {t.step2.button}
           </Button>
         </div>
       ),
@@ -118,11 +123,11 @@ export default function Home() {
     3: {
       id: 3,
       progress: 35,
-      title: "Abschnitt B: Identitätsprüfung",
+      title: t.step3.title,
       content: (
         <div className="space-y-4">
           <p className="text-sm">
-            Für das gewählte Verfahren ist eine persönliche Vorsprache in der Dienststelle zwingend erforderlich (§ 9 Abs. 1 Nr. 4 DigG).
+            {t.step3.description}
           </p>
           <div
             className={`border-l-4 p-4 ${
@@ -136,17 +141,17 @@ export default function Home() {
                 theme === "dark" ? "text-blue-200" : "text-blue-900"
               }`}
             >
-              Verfügbarkeit:
+              {t.step3.availabilityTitle}
             </p>
             <p
               className={`text-sm mt-1 ${
                 theme === "dark" ? "text-blue-300" : "text-blue-800"
               }`}
             >
-              Aufgrund hoher Auslastung sind derzeit keine Termine in Ihrer Region verfügbar.
+              {t.step3.availabilityMessage}
             </p>
           </div>
-          <p className="text-sm font-semibold">Nächster bundesweit verfügbarer Termin:</p>
+          <p className="text-sm font-semibold">{t.step3.termTitle}</p>
           <div
             className={`p-4 border font-mono text-sm space-y-1 ${
               theme === "dark"
@@ -154,9 +159,9 @@ export default function Home() {
                 : "bg-gray-100 border-gray-300"
             }`}
           >
-            <div>Dienststelle: Außenstelle Helgoland-Süd</div>
-            <div>Datum: 14. September 2026</div>
-            <div>Uhrzeit: 04:15 Uhr (Kernarbeitszeit)</div>
+            <div>{t.step3.office}</div>
+            <div>{t.step3.date}</div>
+            <div>{t.step3.time}</div>
           </div>
           <Button
             onClick={() => setCurrentStep(4)}
@@ -166,7 +171,7 @@ export default function Home() {
                 : "bg-[#003366] hover:bg-[#002244]"
             }`}
           >
-            Termin verbindlich buchen
+            {t.step3.button}
           </Button>
         </div>
       ),
@@ -174,7 +179,7 @@ export default function Home() {
     4: {
       id: 4,
       progress: 45,
-      title: "Fristablauf-Warnung",
+      title: t.step4.title,
       content: (
         <div className="space-y-4">
           <div
@@ -189,18 +194,18 @@ export default function Home() {
                 theme === "dark" ? "text-red-200" : "text-red-900"
               }`}
             >
-              Fristablauf-Warnung:
+              {t.step4.warningTitle}
             </p>
             <p
               className={`text-sm mt-1 ${
                 theme === "dark" ? "text-red-300" : "text-red-800"
               }`}
             >
-              Während der Terminbuchung ist die Gültigkeit Ihres eingereichten Wohnsitznachweises abgelaufen (Gültigkeit max. 48 Stunden).
+              {t.step4.warningMessage}
             </p>
           </div>
           <p className="text-sm">
-            Bitte fordern Sie bei Ihrem lokalen Einwohnermeldeamt eine "Aktualisierte Bescheinigung zur Vorlage bei Bundesbehörden" an.
+            {t.step4.description}
           </p>
           <Button
             onClick={() => setCurrentStep(5)}
@@ -210,7 +215,7 @@ export default function Home() {
                 : "bg-[#003366] hover:bg-[#002244]"
             }`}
           >
-            Erneute Einreichung bestätigen
+            {t.step4.button}
           </Button>
         </div>
       ),
@@ -218,7 +223,7 @@ export default function Home() {
     5: {
       id: 5,
       progress: 60,
-      title: "Verwaltungsverfahren eingeleitet",
+      title: t.step5.title,
       content: (
         <div className="space-y-6 text-center py-8">
           <div className="flex justify-center">
@@ -232,13 +237,13 @@ export default function Home() {
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-2">
-              Verwaltungsverfahren eingeleitet
+              {t.step5.heading}
             </h3>
             <p className="text-sm text-muted-foreground">
-              Ihre Daten werden mit dem Zentralregister abgeglichen. Dieser Vorgang kann je nach Netzauslastung mehrere Minuten dauern.
+              {t.step5.description}
             </p>
             <p className={`text-xs mt-3 ${theme === "dark" ? "text-slate-500" : "text-gray-500"}`}>
-              Bitte schließen Sie dieses Fenster nicht.
+              {t.step5.warning}
             </p>
           </div>
           <Button
@@ -249,7 +254,7 @@ export default function Home() {
                 : "bg-[#003366] hover:bg-[#002244]"
             }`}
           >
-            Prüfstatus abrufen
+            {t.step5.button}
           </Button>
         </div>
       ),
@@ -257,16 +262,16 @@ export default function Home() {
     6: {
       id: 6,
       progress: 85,
-      title: "Nachforderung von Mitwirkungspflichten",
+      title: t.step6.title,
       content: (
         <div className="space-y-4">
           <p className="text-sm">
-            Der zuständige Sachbearbeiter hat Ihren Antrag gesichtet. Zur abschließenden Bescheidung fehlen folgende Unterlagen:
+            {t.step6.description}
           </p>
           <ul className="text-sm space-y-2 ml-4 list-disc">
-            <li>Beglaubigte Kopie der Geburtsurkunde der Großmutter mütterlicherseits</li>
-            <li>Nachweis über die Zahlung der Verwaltungsgebühr (14,20 €) per Verrechnungsscheck</li>
-            <li>Handgeschriebene Begründung der Dringlichkeit (min. 500 Wörter)</li>
+            <li>{t.step6.item1}</li>
+            <li>{t.step6.item2}</li>
+            <li>{t.step6.item3}</li>
           </ul>
           <Button
             onClick={() => setCurrentStep(7)}
@@ -276,7 +281,7 @@ export default function Home() {
                 : "bg-[#003366] hover:bg-[#002244]"
             }`}
           >
-            Unterlagen digital nachreichen
+            {t.step6.button}
           </Button>
         </div>
       ),
@@ -284,14 +289,14 @@ export default function Home() {
     7: {
       id: 7,
       progress: 100,
-      title: "Verfahren abgeschlossen",
+      title: t.step7.title,
       content: (
         <div className="space-y-6 text-center py-8">
           <h3 className="text-lg font-semibold text-green-700">
-            Verfahren abgeschlossen
+            {t.step7.heading}
           </h3>
           <p className="text-sm">
-            Ihr Antrag wurde erfolgreich in das Langzeitarchiv überführt. Ein Bescheid wird Ihnen auf dem Postweg (Zustellungsurkunde) übermittelt.
+            {t.step7.description}
           </p>
           <div
             className={`p-6 text-center border-l-4 ${
@@ -301,15 +306,15 @@ export default function Home() {
             }`}
           >
             <p className={`text-xs uppercase tracking-wide mb-2 ${theme === "dark" ? "text-slate-400" : "text-gray-600"}`}>
-              Statistische Auswertung
+              {t.step7.statsLabel}
             </p>
             <div className="text-4xl font-bold text-red-700 mb-1">487 Tage</div>
             <p className={`text-xs ${theme === "dark" ? "text-slate-400" : "text-gray-600"}`}>
-              Gesamtbearbeitungsdauer
+              {t.step7.processingTime}
             </p>
           </div>
           <p className={`text-xs ${theme === "dark" ? "text-slate-500" : "text-gray-500"}`}>
-            Hinweis: Die Einlegung eines Widerspruchs verlängert die Bearbeitungszeit um voraussichtlich 24 Monate.
+            {t.step7.warning}
           </p>
           <Button
             onClick={() => {
@@ -322,7 +327,7 @@ export default function Home() {
                 : "bg-[#003366] hover:bg-[#002244]"
             }`}
           >
-            Neuen Vorgang anlegen
+            {t.step7.button}
           </Button>
         </div>
       ),
@@ -346,30 +351,43 @@ export default function Home() {
             <div className="flex items-center gap-4">
               <span className="text-2xl">🇩🇪</span>
               <div>
-                <h1 className="text-xl font-bold tracking-wide">Service-Portal Bund</h1>
-                <p className="text-xs opacity-90">Digitales Verwaltungsmanagement</p>
+                <h1 className="text-xl font-bold tracking-wide">{t.header.title}</h1>
+                <p className="text-xs opacity-90">{t.header.subtitle}</p>
               </div>
             </div>
-            <button
-              onClick={toggleTheme}
-              className={`p-2 rounded-md transition-colors ${
-                theme === "dark"
-                  ? "bg-slate-700 hover:bg-slate-600"
-                  : "bg-[#002244] hover:bg-[#001a33]"
-              }`}
-              title={theme === "dark" ? "Tagmodus" : "Nachtschicht-Modus"}
-            >
-              {theme === "dark" ? (
-                <Sun className="w-5 h-5" />
-              ) : (
-                <Moon className="w-5 h-5" />
-              )}
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={toggleLanguage}
+                className={`px-3 py-2 rounded-md transition-colors text-sm font-semibold ${
+                  theme === "dark"
+                    ? "bg-slate-700 hover:bg-slate-600"
+                    : "bg-[#002244] hover:bg-[#001a33]"
+                }`}
+                title={language === "de" ? "Switch to English" : "Zu Deutsch wechseln"}
+              >
+                {language === "de" ? "EN" : "DE"}
+              </button>
+              <button
+                onClick={toggleTheme}
+                className={`p-2 rounded-md transition-colors ${
+                  theme === "dark"
+                    ? "bg-slate-700 hover:bg-slate-600"
+                    : "bg-[#002244] hover:bg-[#001a33]"
+                }`}
+                title={theme === "dark" ? "Tagmodus" : "Nachtschicht-Modus"}
+              >
+                {theme === "dark" ? (
+                  <Sun className="w-5 h-5" />
+                ) : (
+                  <Moon className="w-5 h-5" />
+                )}
+              </button>
+            </div>
           </div>
           <nav className="text-xs opacity-75 flex gap-6 mt-4">
-            <span>Hilfe</span>
-            <span>Barrierefreiheit</span>
-            <span>DE</span>
+            <span>{t.header.help}</span>
+            <span>{t.header.accessibility}</span>
+            <span>{t.header.language}</span>
           </nav>
         </div>
       </header>
@@ -377,7 +395,7 @@ export default function Home() {
       {/* Breadcrumb */}
       <div className="max-w-4xl mx-auto px-6 py-4">
         <p className={`text-xs ${theme === "dark" ? "text-slate-400" : "text-gray-600"}`}>
-          Startseite &gt; Anträge &gt; Bürgerdienste &gt; Formular 42-B
+          {t.breadcrumb}
         </p>
       </div>
 
@@ -394,7 +412,7 @@ export default function Home() {
           <div className="mb-8">
             <div className="flex justify-between items-center mb-2">
               <label className="text-xs font-bold">
-                Bearbeitungsfortschritt: <span>{step.progress}%</span>
+                {t.progress} <span>{step.progress}%</span>
               </label>
             </div>
             <div
@@ -441,13 +459,13 @@ export default function Home() {
               theme === "dark" ? "text-slate-400" : "text-gray-700"
             }`}
           >
-            <span className="underline cursor-pointer">Impressum</span>
-            <span className="underline cursor-pointer">Datenschutz</span>
-            <span className="underline cursor-pointer">Kontakt</span>
-            <span className="underline cursor-pointer">Rechtsbehelfsbelehrung</span>
+            <span className="underline cursor-pointer">{t.footer.imprint}</span>
+            <span className="underline cursor-pointer">{t.footer.privacy}</span>
+            <span className="underline cursor-pointer">{t.footer.contact}</span>
+            <span className="underline cursor-pointer">{t.footer.legalNotice}</span>
           </div>
           <p className={`text-xs ${theme === "dark" ? "text-slate-500" : "text-gray-600"}`}>
-            &copy; 2026 Bundesamt für digitale Verzögerung (BaDV). Alle Rechte vorbehalten.
+            {t.footer.copyright}
           </p>
         </div>
       </footer>
