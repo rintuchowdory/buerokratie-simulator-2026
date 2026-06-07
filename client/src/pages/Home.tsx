@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
 import { translations } from "@/lib/translations";
@@ -395,7 +396,11 @@ export default function Home() {
                     </p>
                   </div>
                   <div className={`text-lg font-bold ${stat.color}`}>
-                    {stat.value}
+                    <AnimatedCounter
+                      value={stat.value}
+                      duration={2000}
+                      decimals={stat.value.includes(",") ? 1 : 0}
+                    />
                   </div>
                 </div>
               ))}
