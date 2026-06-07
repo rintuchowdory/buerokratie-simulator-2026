@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
 import { translations } from "@/lib/translations";
+import { statisticsData } from "@/lib/statistics";
 import { Moon, Sun } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -356,7 +357,61 @@ export default function Home() {
               {t.step7.processingTime}
             </p>
           </div>
-          <p className={`text-xs ${theme === "dark" ? "text-slate-500" : "text-gray-500"}`}>
+          {/* Statistik-Dashboard */}
+          <div
+            className={`border rounded-md overflow-hidden ${
+              theme === "dark"
+                ? "bg-slate-800 border-slate-700"
+                : "bg-white border-gray-300"
+            }`}
+          >
+            <div
+              className={`p-4 border-b ${
+                theme === "dark"
+                  ? "bg-slate-700 border-slate-600"
+                  : "bg-gray-100 border-gray-300"
+              }`}
+            >
+              <h4 className="font-bold text-sm">
+                {statisticsData[language].title}
+              </h4>
+            </div>
+            <div className="p-4 space-y-3">
+              {statisticsData[language].stats.map((stat, idx) => (
+                <div
+                  key={idx}
+                  className={`flex justify-between items-center p-3 rounded border-l-4 ${
+                    theme === "dark"
+                      ? "bg-slate-700 border-slate-600"
+                      : "bg-gray-50 border-gray-300"
+                  }`}
+                >
+                  <div className="text-left">
+                    <p className={`text-xs font-semibold ${theme === "dark" ? "text-slate-300" : "text-gray-700"}`}>
+                      {stat.label}
+                    </p>
+                    <p className={`text-xs ${theme === "dark" ? "text-slate-500" : "text-gray-500"}`}>
+                      {stat.unit}
+                    </p>
+                  </div>
+                  <div className={`text-lg font-bold ${stat.color}`}>
+                    {stat.value}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div
+              className={`p-3 text-center border-t text-xs ${
+                theme === "dark"
+                  ? "bg-slate-700 border-slate-600 text-slate-400"
+                  : "bg-gray-100 border-gray-300 text-gray-600"
+              }`}
+            >
+              {statisticsData[language].footer}
+            </div>
+          </div>
+
+          <p className={`text-xs text-center ${theme === "dark" ? "text-slate-500" : "text-gray-500"}`}>
             {t.step7.warning}
           </p>
           <Button
