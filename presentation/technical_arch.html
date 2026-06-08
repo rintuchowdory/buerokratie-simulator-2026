@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Architecture</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #F8FAFC;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .slide-container::before {
+            content: '';
+            position: absolute; left: 0; top: 0; width: 4px; height: 100%; background: #0284C7;
+        }
+        .header { background: #003366; color: white; padding: 40px 60px; }
+        .header-title { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 32px; font-weight: 800; letter-spacing: -0.5px; }
+        .content {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 40px;
+            align-content: start;
+        }
+        .column-title {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            color: #003366;
+            margin-bottom: 16px;
+            letter-spacing: -0.3px;
+            grid-column: auto;
+        }
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .tech-item {
+            padding: 12px;
+            background: white;
+            border-left: 4px solid #0284C7;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+        .tech-icon {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #E2E8F0;
+            color: #003366;
+            font-size: 16px;
+        }
+        .tech-text {
+            flex: 1;
+        }
+        .tech-name {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: #003366;
+        }
+        .tech-desc {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 11px;
+            font-weight: 300;
+            color: #334155;
+            line-height: 1.4;
+            margin-top: 2px;
+        }
+        .column-1 { grid-column: 1; }
+        .column-2 { grid-column: 2; }
+        .column-3 { grid-column: 3; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <div class="header-title">Modern React Stack with Production-Ready Patterns</div>
+        </div>
+        <div class="content">
+            <div class="column column-1">
+                <div class="column-title">Frontend Stack</div>
+                
+                <div class="tech-item">
+                    <div class="tech-icon"><i class="fab fa-react"></i></div>
+                    <div class="tech-text">
+                        <div class="tech-name">React 19</div>
+                        <div class="tech-desc">Latest version with TypeScript for type safety</div>
+                    </div>
+                </div>
+                
+                <div class="tech-item">
+                    <div class="tech-icon"><i class="fas fa-palette"></i></div>
+                    <div class="tech-text">
+                        <div class="tech-name">Tailwind CSS 4</div>
+                        <div class="tech-desc">Utility-first styling framework</div>
+                    </div>
+                </div>
+                
+                <div class="tech-item">
+                    <div class="tech-icon"><i class="fas fa-cube"></i></div>
+                    <div class="tech-text">
+                        <div class="tech-name">shadcn/ui</div>
+                        <div class="tech-desc">Consistent UI component patterns</div>
+                    </div>
+                </div>
+                
+                <div class="tech-item">
+                    <div class="tech-icon"><i class="fas fa-route"></i></div>
+                    <div class="tech-text">
+                        <div class="tech-name">Wouter</div>
+                        <div class="tech-desc">Lightweight client-side routing</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="column column-2">
+                <div class="column-title">Key Components</div>
+                
+                <div class="tech-item">
+                    <div class="tech-icon"><i class="fas fa-language"></i></div>
+                    <div class="tech-text">
+                        <div class="tech-name">Language Context</div>
+                        <div class="tech-desc">DE/EN translation management</div>
+                    </div>
+                </div>
+                
+                <div class="tech-item">
+                    <div class="tech-icon"><i class="fas fa-moon"></i></div>
+                    <div class="tech-text">
+                        <div class="tech-name">Theme Context</div>
+                        <div class="tech-desc">Light/Dark mode switching</div>
+                    </div>
+                </div>
+                
+                <div class="tech-item">
+                    <div class="tech-icon"><i class="fas fa-calculator"></i></div>
+                    <div class="tech-text">
+                        <div class="tech-name">useCountUp Hook</div>
+                        <div class="tech-desc">Animated number transitions</div>
+                    </div>
+                </div>
+                
+                <div class="tech-item">
+                    <div class="tech-icon"><i class="fas fa-chart-bar"></i></div>
+                    <div class="tech-text">
+                        <div class="tech-name">AnimatedCounter</div>
+                        <div class="tech-desc">Statistics visualization</div>
+                    </div>
+                </div>
+                
+                <div class="tech-item">
+                    <div class="tech-icon"><i class="fas fa-tasks"></i></div>
+                    <div class="tech-text">
+                        <div class="tech-name">Step Manager</div>
+                        <div class="tech-desc">Multi-step form state</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="column column-3">
+                <div class="column-title">Performance</div>
+                
+                <div class="tech-item">
+                    <div class="tech-icon"><i class="fas fa-bolt"></i></div>
+                    <div class="tech-text">
+                        <div class="tech-name">requestAnimationFrame</div>
+                        <div class="tech-desc">Smooth 60fps animations</div>
+                    </div>
+                </div>
+                
+                <div class="tech-item">
+                    <div class="tech-icon"><i class="fas fa-zap"></i></div>
+                    <div class="tech-text">
+                        <div class="tech-name">CSS Transitions</div>
+                        <div class="tech-desc">GPU-accelerated motion</div>
+                    </div>
+                </div>
+                
+                <div class="tech-item">
+                    <div class="tech-icon"><i class="fas fa-sitemap"></i></div>
+                    <div class="tech-text">
+                        <div class="tech-name">Lazy Rendering</div>
+                        <div class="tech-desc">Component rendering by step</div>
+                    </div>
+                </div>
+                
+                <div class="tech-item">
+                    <div class="tech-icon"><i class="fas fa-compress"></i></div>
+                    <div class="tech-text">
+                        <div class="tech-name">Tree-Shaking</div>
+                        <div class="tech-desc">Minimal bundle size</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

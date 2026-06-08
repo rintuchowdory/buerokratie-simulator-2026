@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Statistics Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #F8FAFC;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .slide-container::before {
+            content: '';
+            position: absolute; left: 0; top: 0; width: 4px; height: 100%; background: #0284C7;
+        }
+        .header { background: #003366; color: white; padding: 40px 60px; }
+        .header-title { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 32px; font-weight: 800; letter-spacing: -0.5px; }
+        .header-subtitle { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 14px; font-weight: 300; margin-top: 8px; opacity: 0.9; }
+        .content {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            padding: 40px;
+            align-content: start;
+        }
+        .metric-card {
+            padding: 20px;
+            background: white;
+            border-left: 4px solid #0284C7;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .metric-card.severity-red {
+            border-left-color: #DC2626;
+            background: #FEF2F2;
+        }
+        .metric-card.severity-orange {
+            border-left-color: #EA580C;
+            background: #FEF3C7;
+        }
+        .metric-card.severity-yellow {
+            border-left-color: #FBBF24;
+            background: #FFFBEB;
+        }
+        .metric-number {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 36px;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+        .metric-card.severity-red .metric-number { color: #DC2626; }
+        .metric-card.severity-orange .metric-number { color: #EA580C; }
+        .metric-card.severity-yellow .metric-number { color: #B45309; }
+        .metric-label {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 12px;
+            font-weight: 800;
+            color: #334155;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+        .metric-unit {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 11px;
+            font-weight: 300;
+            color: #64748B;
+        }
+        .footer-note {
+            grid-column: 1 / -1;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 12px;
+            font-weight: 300;
+            color: #64748B;
+            text-align: center;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <div class="header-title">Humorous Data Visualization</div>
+            <div class="header-subtitle">Eight Animated Metrics Revealing Bureaucratic Reality</div>
+        </div>
+        <div class="content">
+            <div class="metric-card severity-red">
+                <div class="metric-number">487</div>
+                <div class="metric-label">Processing<br>Time</div>
+                <div class="metric-unit">Days (16 months)</div>
+            </div>
+            
+            <div class="metric-card severity-red">
+                <div class="metric-number">0.3%</div>
+                <div class="metric-label">Success<br>Rate</div>
+                <div class="metric-unit">of all applications</div>
+            </div>
+            
+            <div class="metric-card severity-orange">
+                <div class="metric-number">94</div>
+                <div class="metric-label">Wait Time<br>for Appointment</div>
+                <div class="metric-unit">Days (3 months)</div>
+            </div>
+            
+            <div class="metric-card severity-yellow">
+                <div class="metric-number">23</div>
+                <div class="metric-label">Required<br>Documents</div>
+                <div class="metric-unit">on average per app</div>
+            </div>
+            
+            <div class="metric-card severity-red">
+                <div class="metric-number">78%</div>
+                <div class="metric-label">Error Rate in<br>Application</div>
+                <div class="metric-unit">of all submissions</div>
+            </div>
+            
+            <div class="metric-card severity-red">
+                <div class="metric-number">0.5</div>
+                <div class="metric-label">Staff per<br>1,000 Apps</div>
+                <div class="metric-unit">FTE (Full-Time Equivalent)</div>
+            </div>
+            
+            <div class="metric-card severity-orange">
+                <div class="metric-number">4.2</div>
+                <div class="metric-label">Additional<br>Requests</div>
+                <div class="metric-unit">per application</div>
+            </div>
+            
+            <div class="metric-card severity-red">
+                <div class="metric-number">62%</div>
+                <div class="metric-label">Applicants<br>Who Give Up</div>
+                <div class="metric-unit">before completion</div>
+            </div>
+            
+            <div class="footer-note">
+                Source: Bundesamt für digitale Verzögerung (BaDV) | Data as of: 2026 | Note: All data is fictional and satirical
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reusable Skill Documentation</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #F8FAFC;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .slide-container::before {
+            content: '';
+            position: absolute; left: 0; top: 0; width: 4px; height: 100%; background: #0284C7;
+        }
+        .header { background: #003366; color: white; padding: 40px 60px; }
+        .header-title { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 32px; font-weight: 800; letter-spacing: -0.5px; }
+        .content {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 40px;
+            align-content: start;
+        }
+        .section-title {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 16px;
+            font-weight: 800;
+            color: #003366;
+            margin-bottom: 16px;
+            letter-spacing: -0.3px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-icon {
+            color: #0284C7;
+            font-size: 18px;
+        }
+        .item {
+            padding: 12px;
+            background: white;
+            border-left: 4px solid #0284C7;
+            margin-bottom: 12px;
+        }
+        .item-title {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: #003366;
+            margin-bottom: 4px;
+        }
+        .item-description {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 11px;
+            font-weight: 300;
+            color: #334155;
+            line-height: 1.5;
+        }
+        .capability-item {
+            padding: 12px;
+            background: white;
+            border-left: 4px solid #0284C7;
+            margin-bottom: 12px;
+            display: flex;
+            gap: 10px;
+        }
+        .capability-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #E2E8F0;
+            color: #003366;
+            font-size: 12px;
+        }
+        .capability-text {
+            flex: 1;
+        }
+        .capability-name {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            color: #003366;
+        }
+        .capability-desc {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 10px;
+            font-weight: 300;
+            color: #334155;
+            line-height: 1.4;
+            margin-top: 2px;
+        }
+        .highlight-box {
+            grid-column: 1 / -1;
+            padding: 16px;
+            background: #FEF3C7;
+            border-left: 4px solid #FBBF24;
+            margin-top: 8px;
+        }
+        .highlight-title {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 12px;
+            font-weight: 800;
+            color: #B45309;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .highlight-text {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 11px;
+            font-weight: 300;
+            color: #92400E;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <div class="header-title">Enabling Future Bureaucracy Simulators</div>
+        </div>
+        
+        <div class="content">
+            <!-- Skill Contents Section -->
+            <div>
+                <div class="section-title">
+                    <span class="section-icon"><i class="fas fa-file-alt"></i></span>
+                    Skill Contents
+                </div>
+                
+                <div class="item">
+                    <div class="item-title">SKILL.md</div>
+                    <div class="item-description">Complete workflow documentation with quick-start guide and architecture overview</div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-title">Implementation Guide</div>
+                    <div class="item-description">Step-by-step code examples for all 7 components and features</div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-title">Component Structure</div>
+                    <div class="item-description">Detailed JSX patterns and styling guidelines for reuse</div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-title">Translation System</div>
+                    <div class="item-description">Pre-built DE/EN translation framework ready to extend</div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-title">Animation Specs</div>
+                    <div class="item-description">Timing and easing specifications for consistent motion</div>
+                </div>
+            </div>
+            
+            <!-- What It Enables Section -->
+            <div>
+                <div class="section-title">
+                    <span class="section-icon"><i class="fas fa-rocket"></i></span>
+                    What It Enables
+                </div>
+                
+                <div class="capability-item">
+                    <div class="capability-icon"><i class="fas fa-bolt"></i></div>
+                    <div class="capability-text">
+                        <div class="capability-name">Rapid Prototyping</div>
+                        <div class="capability-desc">Build similar projects in days instead of weeks</div>
+                    </div>
+                </div>
+                
+                <div class="capability-item">
+                    <div class="capability-icon"><i class="fas fa-cube"></i></div>
+                    <div class="capability-text">
+                        <div class="capability-name">Reusable Components</div>
+                        <div class="capability-desc">Language Context, Theme Context, AnimatedCounter patterns</div>
+                    </div>
+                </div>
+                
+                <div class="capability-item">
+                    <div class="capability-icon"><i class="fas fa-language"></i></div>
+                    <div class="capability-text">
+                        <div class="capability-name">Pre-built i18n</div>
+                        <div class="capability-desc">Translation structure ready for new languages</div>
+                    </div>
+                </div>
+                
+                <div class="capability-item">
+                    <div class="capability-icon"><i class="fas fa-palette"></i></div>
+                    <div class="capability-text">
+                        <div class="capability-name">Styling Guidelines</div>
+                        <div class="capability-desc">Government portal aesthetic and animation timings</div>
+                    </div>
+                </div>
+                
+                <div class="capability-item">
+                    <div class="capability-icon"><i class="fas fa-book"></i></div>
+                    <div class="capability-text">
+                        <div class="capability-name">Documentation</div>
+                        <div class="capability-desc">Complete reference for all patterns and best practices</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Future Applications Section -->
+            <div>
+                <div class="section-title">
+                    <span class="section-icon"><i class="fas fa-globe"></i></span>
+                    Future Applications
+                </div>
+                
+                <div class="item">
+                    <div class="item-title">Form Variants</div>
+                    <div class="item-description">Different government forms (42-A, 42-B, 42-C) with unique requirements</div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-title">Educational Tools</div>
+                    <div class="item-description">Annotated explanations of real administrative procedures</div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-title">International Versions</div>
+                    <div class="item-description">Adapt simulator for other countries' bureaucracies</div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-title">Enhanced Features</div>
+                    <div class="item-description">Random failures, leaderboards, sound effects, export PDFs</div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-title">Custom Branding</div>
+                    <div class="item-description">Adapt color palette and terminology for specific agencies</div>
+                </div>
+            </div>
+            
+            <!-- Highlight Box -->
+            <div class="highlight-box">
+                <div class="highlight-title">✓ Skill Status: Ready for Use</div>
+                <div class="highlight-text">
+                    The Manus Skill has been validated and is ready for immediate use. Developers can use this skill to rapidly prototype new bureaucracy simulators or similar interactive government portal simulations with minimal setup time.
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

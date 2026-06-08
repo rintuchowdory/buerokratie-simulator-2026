@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Overview</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px; /* keep as required */
+            background: #F8FAFC;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .slide-container::before {
+            content: '';
+            position: absolute; left: 0; top: 0; width: 4px; height: 100%; background: #0284C7;
+        }
+        .header { background: #003366; color: white; padding: 40px 60px; border-bottom: 1px solid #E2E8F0; }
+        .header-title { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 32px; font-weight: 800; letter-spacing: -0.5px; }
+        /* Reduced overall vertical padding and gaps to lower total height */
+        .content {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 24px;
+            padding: 40px; /* decreased from 60px */
+            align-content: start;
+        }
+        .description { grid-column: 1 / 2; }
+        .description-text {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 16px; font-weight: 300; line-height: 1.8; color: #334155;
+            margin-bottom: 20px; /* reduced from 30 */
+        }
+        .tech-stack { grid-column: 2 / 3; align-self: start; }
+        .tech-title { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 20px; font-weight: 800; color: #003366; margin-bottom: 16px; letter-spacing: -0.3px; }
+        .tech-item { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; padding: 8px; background: #E2E8F0; border-left: 4px solid #0284C7; }
+        .tech-icon { color: #003366; font-size: 18px; min-width: 24px; }
+        .tech-text { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 14px; font-weight: 600; color: #334155; }
+        /* Make highlights a single row to save vertical space */
+        .highlights { grid-column: 1 / 2; grid-row: 2 / 3; }
+        .highlight-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+        .highlight-box { padding: 12px; background: white; border-left: 4px solid #0284C7; }
+        .highlight-number { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 28px; font-weight: 800; color: #003366; line-height: 1; }
+        .highlight-label { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 12px; font-weight: 600; color: #334155; margin-top: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <div class="header-title">From Concept to Reality</div>
+        </div>
+        <div class="content">
+            <div class="description">
+                <div class="description-text">
+                    The Bürokratie-Simulator 2026 is a fully functional interactive web application that humorously mimics authentic German government administration processes. Developed using React, Tailwind CSS, and shadcn/ui, the simulator guides users through a realistic 7-step bureaucratic application process—complete with frustrating delays, missing documents, and a final processing time of 487 days.
+                </div>
+                <div class="description-text">
+                    The project demonstrates modern web development practices including multi-language support, dark mode, animated components, and state management, all wrapped in authentic government UI styling that mirrors real-world Service-Portal Bund interfaces.
+                </div>
+                <div class="highlights">
+                    <div class="highlight-grid">
+                        <div class="highlight-box">
+                            <div class="highlight-number">7</div>
+                            <div class="highlight-label">Application Steps</div>
+                        </div>
+                        <div class="highlight-box">
+                            <div class="highlight-number">2</div>
+                            <div class="highlight-label">Languages (DE/EN)</div>
+                        </div>
+                        <div class="highlight-box">
+                            <div class="highlight-number">487</div>
+                            <div class="highlight-label">Day Processing Time</div>
+                        </div>
+                        <div class="highlight-box">
+                            <div class="highlight-number">0.3%</div>
+                            <div class="highlight-label">Success Rate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tech-stack">
+                <div class="tech-title">Technology Stack</div>
+                <div class="tech-item">
+                    <div class="tech-icon"><i class="fab fa-react"></i></div>
+                    <div class="tech-text">React 19 + TypeScript</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon"><i class="fas fa-palette"></i></div>
+                    <div class="tech-text">Tailwind CSS 4</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon"><i class="fas fa-cube"></i></div>
+                    <div class="tech-text">shadcn/ui Components</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon"><i class="fas fa-route"></i></div>
+                    <div class="tech-text">Wouter Routing</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

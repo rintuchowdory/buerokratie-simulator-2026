@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Language & Dark Mode</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #F8FAFC;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .slide-container::before {
+            content: '';
+            position: absolute; left: 0; top: 0; width: 4px; height: 100%; background: #0284C7;
+        }
+        .header { background: #003366; color: white; padding: 40px 60px; }
+        .header-title { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 32px; font-weight: 800; letter-spacing: -0.5px; }
+        .content {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            padding: 0;
+        }
+        /* Reduced section padding to save vertical space */
+        .section {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+        }
+        .section-left { border-right: 1px solid #E2E8F0; }
+        .section-title {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            color: #003366;
+            margin-bottom: 20px;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-icon {
+            color: #0284C7;
+            font-size: 24px;
+        }
+        /* Shrink inner padding and spacing for language pairs */
+        .language-pair {
+            margin-bottom: 8px;
+            padding: 8px;
+            background: white;
+            border-left: 4px solid #0284C7;
+        }
+        .language-label {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 11px;
+            font-weight: 800;
+            color: #0284C7;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        .language-text {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #334155;
+            line-height: 1.6;
+        }
+        .color-sample {
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+        /* Slightly reduced color row height */
+        .color-row {
+            display: flex;
+            height: 48px;
+            margin-bottom: 8px;
+        }
+        .color-box {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            text-align: center;
+            padding: 8px;
+        }
+        .color-label {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            color: #334155;
+            margin-top: 6px;
+            text-align: center;
+        }
+        .light-bg { background: #F8FAFC; color: #334155; }
+        .dark-bg { background: #1E293B; }
+        .blue-primary { background: #003366; }
+        .blue-accent { background: #0284C7; }
+        .slate-dark { background: #334155; }
+        .slate-light { background: #E2E8F0; color: #334155; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <div class="header-title">Global Accessibility Meets Authenticity</div>
+        </div>
+        
+        <div class="content">
+            <div class="section section-left">
+                <div class="section-title">
+                    <span class="section-icon"><i class="fas fa-globe"></i></span>
+                    Language Support (DE/EN)
+                </div>
+                
+                <div class="language-pair">
+                    <div class="language-label">German</div>
+                    <div class="language-text">Bearbeitungszeit: 487 Tage</div>
+                </div>
+                
+                <div class="language-pair">
+                    <div class="language-label">English</div>
+                    <div class="language-text">Processing Time: 487 Days</div>
+                </div>
+                
+                <div class="language-pair">
+                    <div class="language-label">German</div>
+                    <div class="language-text">Erfolgsquote: 0,3%</div>
+                </div>
+                
+                <div class="language-pair">
+                    <div class="language-label">English</div>
+                    <div class="language-text">Success Rate: 0.3%</div>
+                </div>
+                
+                <div class="language-pair">
+                    <div class="language-label">German</div>
+                    <div class="language-text">Antragsteller die aufgeben: 62%</div>
+                </div>
+                
+                <div class="language-pair">
+                    <div class="language-label">English</div>
+                    <div class="language-text">Applicants Who Give Up: 62%</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">
+                    <span class="section-icon"><i class="fas fa-moon"></i></span>
+                    Dark Mode Color Palette
+                </div>
+                
+                <div class="color-sample">
+                    <div class="color-row">
+                        <div class="color-box light-bg">Light Background</div>
+                        <div class="color-box dark-bg">Dark Background</div>
+                    </div>
+                    <div class="color-label">Background Colors</div>
+                </div>
+                
+                <div class="color-sample">
+                    <div class="color-row">
+                        <div class="color-box blue-primary">Primary Blue</div>
+                        <div class="color-box blue-accent">Accent Blue</div>
+                    </div>
+                    <div class="color-label">Brand Colors</div>
+                </div>
+                
+                <div class="color-sample">
+                    <div class="color-row">
+                        <div class="color-box slate-dark">Slate Dark</div>
+                        <div class="color-box slate-light">Slate Light</div>
+                    </div>
+                    <div class="color-label">Neutral Palette</div>
+                </div>
+                
+                <div style="margin-top: 12px; padding: 12px; background: white; border-left: 4px solid #0284C7;">
+                    <div style="font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #334155; line-height: 1.6;">
+                        ✓ All components fully styled for both light and dark contexts
+                        <br>✓ Maintains readability and contrast standards
+                        <br>✓ Simulates late-night bureaucratic work sessions
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

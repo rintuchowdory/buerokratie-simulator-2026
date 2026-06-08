@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Metrics & Impact</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px; /* must keep */
+            background: #F8FAFC;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .slide-container::before {
+            content: '';
+            position: absolute; left: 0; top: 0; width: 4px; height: 100%; background: #0284C7;
+        }
+        /* Header: keep top padding (40px) but reduce bottom padding to save height */
+        .header { background: #003366; color: white; padding: 40px 60px 20px; }
+        .header-title { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 32px; font-weight: 800; letter-spacing: -0.5px; }
+        /* Reduce overall content padding and gaps; make sections use a two-column grid to avoid long vertical stacks */
+        .content {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            padding: 24px;
+            align-content: start;
+        }
+        .section {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* two columns inside each section */
+            gap: 12px;
+        }
+        .section-title {
+            grid-column: 1 / -1; /* span both columns */
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            color: #003366;
+            margin-bottom: 6px;
+            letter-spacing: -0.3px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-icon { color: #0284C7; font-size: 20px; }
+        /* Shrink inner padding of metric cards */
+        .metric-card {
+            padding: 10px;
+            background: white;
+            border-left: 4px solid #0284C7;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .metric-icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #E2E8F0;
+            color: #003366;
+            font-size: 18px;
+        }
+        .metric-content { flex: 1; }
+        .metric-number {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            color: #003366;
+            line-height: 1;
+        }
+        .metric-label {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            color: #334155;
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        /* Removed verbose descriptions to reduce card height */
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <div class="header-title">Quantifying the Bureaucratic Experience</div>
+        </div>
+        
+        <div class="content">
+            <!-- Technical Metrics Section -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="section-icon"><i class="fas fa-chart-line"></i></span>
+                    Technical Metrics
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fas fa-list-check"></i></div>
+                    <div class="metric-content">
+                        <div class="metric-number">7</div>
+                        <div class="metric-label">Application Steps</div>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fas fa-globe"></i></div>
+                    <div class="metric-content">
+                        <div class="metric-number">2</div>
+                        <div class="metric-label">Languages</div>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fas fa-chart-bar"></i></div>
+                    <div class="metric-content">
+                        <div class="metric-number">8</div>
+                        <div class="metric-label">Animated Statistics</div>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fas fa-hourglass-half"></i></div>
+                    <div class="metric-content">
+                        <div class="metric-number">2000ms</div>
+                        <div class="metric-label">Animation Duration</div>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fas fa-hourglass-end"></i></div>
+                    <div class="metric-content">
+                        <div class="metric-number">5000ms</div>
+                        <div class="metric-label">Processing Delay</div>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fas fa-calendar"></i></div>
+                    <div class="metric-content">
+                        <div class="metric-number">487</div>
+                        <div class="metric-label">Processing Time</div>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fas fa-percent"></i></div>
+                    <div class="metric-content">
+                        <div class="metric-number">0.3%</div>
+                        <div class="metric-label">Success Rate</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project Scope Section -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="section-icon"><i class="fas fa-cube"></i></span>
+                    Project Scope
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fas fa-cube"></i></div>
+                    <div class="metric-content">
+                        <div class="metric-number">15+</div>
+                        <div class="metric-label">React Components</div>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fas fa-file-code"></i></div>
+                    <div class="metric-content">
+                        <div class="metric-number">20+</div>
+                        <div class="metric-label">Source Files</div>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fas fa-code-branch"></i></div>
+                    <div class="metric-content">
+                        <div class="metric-number">7</div>
+                        <div class="metric-label">Major Commits</div>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fas fa-cloud"></i></div>
+                    <div class="metric-content">
+                        <div class="metric-number">2</div>
+                        <div class="metric-label">Deployment Platforms</div>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fas fa-browser"></i></div>
+                    <div class="metric-content">
+                        <div class="metric-number">4+</div>
+                        <div class="metric-label">Browser Support</div>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <div class="metric-content">
+                        <div class="metric-number">100%</div>
+                        <div class="metric-label">Responsive</div>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fas fa-universal-access"></i></div>
+                    <div class="metric-content">
+                        <div class="metric-number">WCAG</div>
+                        <div class="metric-label">Accessibility</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
